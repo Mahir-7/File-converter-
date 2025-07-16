@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Free online OCR tool to extract text from images. Convert JPG, PNG, and more into editable text. Created by Mahir Nawab.">
+  <meta name="keywords" content="OCR online, image to text, convert image to text, extract text from image, free OCR tool, Mahir Nawab">
+  <meta name="author" content="Mahir Nawab">
+  <title>OCR - Extract Text from Image | Mahir Nawab</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #ede7f6, #e0f7fa);
+      color: #333;
+      padding: 20px;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    header h1 {
+      font-size: 2.5rem;
+      color: #4527a0;
+    }
+    header p {
+      font-size: 1.1rem;
+      color: #455a64;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      animation: fadeIn 1s ease-in-out;
+    }
+    input, button, textarea {
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      font-size: 1rem;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background-color: #5e35b1;
+      color: white;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #4527a0;
+    }
+    textarea {
+      height: 150px;
+      resize: vertical;
+    }
+    .ad-container {
+      margin: 40px 0;
+      text-align: center;
+      background: #ede7f6;
+      padding: 20px;
+      border: 2px dashed #b39ddb;
+      border-radius: 10px;
+    }
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      color: #607d8b;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🔎 OCR - Image to Text</h1>
+    <p>Extract editable text from images using OCR - by Mahir Nawab</p>
+  </header>
+
+  <div class="ad-container">
+    <!-- AdSense Top -->
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+         data-ad-slot="1111111111"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+  <div class="container">
+    <input type="file" id="ocrInput" accept="image/*">
+    <button onclick="performOCR()">Extract Text</button>
+    <textarea id="outputText" placeholder="Extracted text will appear here..."></textarea>
+  </div>
+
+  <div class="ad-container">
+    <!-- AdSense Middle -->
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+         data-ad-slot="2222222222"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+  <footer>
+    <p>© 2025 Mahir Nawab | All-in-One File Converter | OCR Tool</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@2.1.5/dist/tesseract.min.js"></script>
+  <script>
+    function performOCR() {
+      const input = document.getElementById('ocrInput');
+      const output = document.getElementById('outputText');
+
+      if (!input.files[0]) {
+        output.value = 'Please upload an image.';
+        return;
+      }
+
+      output.value = 'Processing OCR... Please wait...';
+      Tesseract.recognize(
+        input.files[0],
+        'eng',
+        { logger: m => console.log(m) }
+      ).then(({ data: { text } }) => {
+        output.value = text;
+      }).catch(err => {
+        output.value = 'Failed to extract text. Please try another image.';
+      });
+    }
+  </script>
+</body>
+</html>
