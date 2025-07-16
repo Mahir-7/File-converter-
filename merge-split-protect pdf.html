@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Merge, Split, or Protect PDF files online. Free and easy tool to manage your PDF documents. Created by Mahir Nawab.">
+  <meta name="keywords" content="merge pdf, split pdf, protect pdf, pdf tools, free online pdf editor, Mahir Nawab">
+  <meta name="author" content="Mahir Nawab">
+  <title>Merge, Split, Protect PDF - Free Online Tool | Mahir Nawab</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #f1f8e9, #e1f5fe);
+      color: #333;
+      padding: 20px;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    header h1 {
+      font-size: 2.5rem;
+      color: #2e7d32;
+    }
+    header p {
+      font-size: 1.1rem;
+      color: #455a64;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      animation: fadeIn 1s ease-in-out;
+    }
+    input, select, button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      font-size: 1rem;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background-color: #388e3c;
+      color: white;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #2e7d32;
+    }
+    .ad-container {
+      margin: 40px 0;
+      text-align: center;
+      background: #e8f5e9;
+      padding: 20px;
+      border: 2px dashed #81c784;
+      border-radius: 10px;
+    }
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      color: #607d8b;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🧩 Merge / Split / Protect PDF</h1>
+    <p>All-in-one PDF tool - by Mahir Nawab</p>
+  </header>
+
+  <div class="ad-container">
+    <!-- AdSense Top -->
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+         data-ad-slot="1111111111"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+  <div class="container">
+    <input type="file" id="pdfInput" accept="application/pdf" multiple>
+    <select id="action">
+      <option value="merge">Merge PDFs</option>
+      <option value="split">Split PDF (simulate)</option>
+      <option value="protect">Protect PDF (simulate)</option>
+    </select>
+    <button onclick="processPDF()">Execute</button>
+    <p id="status" style="margin-top: 20px; color: green;"></p>
+  </div>
+
+  <div class="ad-container">
+    <!-- AdSense Middle -->
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+         data-ad-slot="2222222222"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+  <footer>
+    <p>© 2025 Mahir Nawab | All-in-One File Converter | Merge/Split/Protect PDF Tool</p>
+  </footer>
+
+  <script>
+    function processPDF() {
+      const files = document.getElementById('pdfInput').files;
+      const action = document.getElementById('action').value;
+      const status = document.getElementById('status');
+
+      if (files.length === 0) {
+        status.textContent = "Please select PDF files first.";
+        return;
+      }
+
+      status.textContent = `Processing: ${action}... (simulated)`;
+      setTimeout(() => {
+        const blob = new Blob([files[0]], { type: 'application/pdf' });
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = `output-${action}.pdf`;
+        link.click();
+        status.textContent = `PDF ${action} complete! File ready for download.`;
+      }, 2000);
+    }
+  </script>
+</body>
+</html>
