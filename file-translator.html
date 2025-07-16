@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Translate files online instantly. Convert text files from one language to another. Supports English, Hindi, Arabic, and more. Created by Mahir Nawab.">
+  <meta name="keywords" content="translate files, language converter, file translator, text file translation, Mahir Nawab">
+  <meta name="author" content="Mahir Nawab">
+  <title>Translate Files - Online File Translator | Mahir Nawab</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #f3e5f5, #e0f7fa);
+      color: #333;
+      padding: 20px;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    header h1 {
+      font-size: 2.5rem;
+      color: #6a1b9a;
+    }
+    header p {
+      font-size: 1.1rem;
+      color: #455a64;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      animation: fadeIn 1s ease-in-out;
+    }
+    input, select, button, textarea {
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      font-size: 1rem;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+    }
+    textarea {
+      height: 150px;
+      resize: vertical;
+    }
+    button {
+      background-color: #8e24aa;
+      color: white;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #6a1b9a;
+    }
+    .ad-container {
+      margin: 40px 0;
+      text-align: center;
+      background: #f3e5f5;
+      padding: 20px;
+      border: 2px dashed #ce93d8;
+      border-radius: 10px;
+    }
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      color: #607d8b;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+  <h1>🌐 Translate Files</h1>
+  <p>Instantly translate your text files - by Mahir Nawab</p>
+  <nav style="margin-top: 15px;">
+    <a href="index.html" style="margin: 0 10px; color: #6a1b9a; font-weight: bold; text-decoration: none;">🏠 Home</a>
+    <a href="pdf-to-word.html" style="margin: 0 10px; color: #6a1b9a; text-decoration: none;">PDF to Word</a>
+    <a href="image-converter.html" style="margin: 0 10px; color: #6a1b9a; text-decoration: none;">Image Converter</a>
+    <a href="compress-pdf.html" style="margin: 0 10px; color: #6a1b9a; text-decoration: none;">Compress PDF</a>
+    <a href="compress-image.html" style="margin: 0 10px; color: #6a1b9a; text-decoration: none;">Compress Image</a>
+    <a href="merge-pdf.html" style="margin: 0 10px; color: #6a1b9a; text-decoration: none;">Merge PDF</a>
+    <a href="ocr.html" style="margin: 0 10px; color: #6a1b9a; text-decoration: none;">OCR</a>
+  </nav>
+</header>
+
+  <div class="ad-container">
+    <!-- AdSense Top -->
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+         data-ad-slot="1111111111"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+  <div class="container">
+    <input type="file" id="fileInput" accept=".txt,.doc,.docx,.rtf,.html,.md">
+    <select id="targetLang">
+  <option value="hi">Hindi</option>
+  <option value="en">English</option>
+  <option value="ar">Arabic</option>
+  <option value="es">Spanish</option>
+  <option value="fr">French</option>
+  <option value="de">German</option>
+  <option value="zh">Chinese</option>
+  <option value="ru">Russian</option>
+  <option value="ur">Urdu</option>
+  <option value="bn">Bengali</option>
+  <option value="pt">Portuguese</option>
+  <option value="ja">Japanese</option>
+  <option value="ko">Korean</option>
+  <option value="it">Italian</option>
+  <option value="tr">Turkish</option>
+  <option value="fa">Persian (Farsi)</option>
+</select>
+    <button onclick="translateFile()">Translate</button>
+    <textarea id="output" placeholder="Translated text will appear here..."></textarea>
+  </div>
+
+  <div class="ad-container">
+    <!-- AdSense Middle -->
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+         data-ad-slot="2222222222"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+  <footer>
+    <p>© 2025 Mahir Nawab | All-in-One File Converter | Translate Files Tool</p>
+  </footer>
+
+  <script>
+    async function translateFile() {
+      const fileInput = document.getElementById('fileInput');
+      const output = document.getElementById('output');
+      const lang = document.getElementById('targetLang').value;
+
+      if (!fileInput.files[0]) {
+        output.value = 'Please upload a .txt file.';
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = async function(e) {
+        const text = e.target.result;
+
+        try {
+          const res = await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=en|${lang}`);
+          const data = await res.json();
+          output.value = data.responseData.translatedText || 'Translation failed.';
+        } catch {
+          output.value = 'Error occurred while translating.';
+        }
+      };
+      reader.readAsText(fileInput.files[0]);
+    }
+  </script>
+</body>
+</html>
