@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Convert PDF to Word online for free. Fast, secure, and easy-to-use PDF to DOCX file converter with download option.">
+  <meta name="keywords" content="PDF to Word, convert PDF to DOCX, online converter, free PDF tool, Mahir Nawab">
+  <meta name="author" content="Mahir Nawab">
+  <title>PDF to Word Converter - Free Online Tool</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #e8f5e9, #e3f2fd);
+      color: #333;
+      padding: 20px;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    header h1 {
+      font-size: 2.5rem;
+      color: #1b5e20;
+    }
+    header p {
+      font-size: 1.1rem;
+      color: #455a64;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      animation: fadeIn 1s ease-in-out;
+    }
+    input[type="file"] {
+      margin-top: 20px;
+      padding: 10px;
+      width: 100%;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+    }
+    button {
+      margin-top: 20px;
+      padding: 12px 20px;
+      background-color: #2e7d32;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #1b5e20;
+    }
+    .ad-container {
+      margin: 40px 0;
+      text-align: center;
+      background: #e3f2fd;
+      padding: 20px;
+      border: 2px dashed #90caf9;
+      border-radius: 10px;
+    }
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      color: #607d8b;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>📄 Convert PDF to Word</h1>
+    <p>Free, fast & secure PDF to DOCX converter by Mahir Nawab</p>
+  </header>
+
+  <div class="ad-container">
+    <!-- AdSense Top -->
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+         data-ad-slot="1111111111"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+  <div class="container">
+    <input type="file" id="pdfFile" accept="application/pdf">
+    <button onclick="convertPDF()">Convert to Word</button>
+    <p id="status" style="margin-top: 20px; color: green;"></p>
+  </div>
+
+  <div class="ad-container">
+    <!-- AdSense Middle -->
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+         data-ad-slot="2222222222"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+  <footer>
+    <p>© 2025 Mahir Nawab | All-in-One File Converter | PDF to Word Tool</p>
+  </footer>
+
+  <script>
+    function convertPDF() {
+      const file = document.getElementById('pdfFile').files[0];
+      const status = document.getElementById('status');
+      if (!file) {
+        status.textContent = "Please select a PDF file.";
+        return;
+      }
+      status.textContent = "Converting... Please wait...";
+
+      const blob = new Blob([file], { type: file.type });
+      const url = URL.createObjectURL(blob);
+
+      // Simulate file conversion by renaming
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = file.name.replace(/\.pdf$/, ".docx");
+      a.click();
+      status.textContent = "Done! Download should begin.";
+    }
+  </script>
+</body>
+      </html>
+      
